@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cơ khí Minh Hồng - Máy bóc vỏ mắc ca</title>
+  <meta name="description" content="Cơ khí Minh Hồng chuyên máy bóc vỏ mắc ca, máy tuốt, máy băm, máy sàng đa năng. Giao hàng toàn quốc, kiểm tra máy trước khi thanh toán." />
+  <style>
+    :root {
+      --bg-1: #0a3e31;
+      --bg-2: #0f6a53;
+      --bg-3: #1ba57d;
+      --yellow: #ffd94d;
+      --yellow-2: #f6c62b;
+      --white: #ffffff;
+      --soft: rgba(255,255,255,0.12);
+      --soft-2: rgba(255,255,255,0.08);
+      --text-soft: rgba(255,255,255,0.86);
+      --red: #d81f1f;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 50% 10%, rgba(255, 230, 120, 0.18), transparent 18%),
+        radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 38%, var(--bg-1) 100%);
+      background-size: auto, 24px 24px, auto;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 28px 0;
+    }
+
+    .card {
+      background: var(--soft);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff6bf;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 28px 0 18px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    h1, h2, h3, h4, p { margin: 0; }
+
+    .brand-title {
+      margin-top: 18px;
+      font-size: clamp(36px, 6vw, 68px);
+      line-height: 0.96;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-title .accent { color: var(--yellow); display: block; margin-top: 8px; }
+
+    .lead {
+      margin-top: 18px;
+      max-width: 720px;
+      color: var(--text-soft);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 18px;
+      font-size: 16px;
+      font-weight: 800;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(180deg, #ffe46f, var(--yellow-2));
+      color: #143f33;
+      box-shadow: 0 10px 24px rgba(255, 211, 77, 0.3);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: var(--white);
+    }
+
+    .feature-list {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .feature-item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #f4fffb;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .hero-media {
+      padding: 14px;
+      position: relative;
+    }
+
+    .hero-media-inner {
+      border-radius: 26px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .image-frame {
+      aspect-ratio: 4 / 3;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.14);
+      border: 1px dashed rgba(255,255,255,0.22);
+      position: relative;
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .spec-badges {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .spec-badge {
+      text-align: center;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 10px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      color: #fff0a5;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin-top: 8px;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      color: var(--text-soft);
+      line-height: 1.7;
+      font-size: 16px;
+      max-width: 760px;
+    }
+
+    .product-grid,
+    .gallery-grid,
+    .info-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .info-grid { grid-template-columns: 1.08fr 0.92fr; }
+
+    .product-card,
+    .gallery-card,
+    .info-card,
+    .contact-card {
+      padding: 20px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .mini-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffe46f, var(--yellow-2));
+      color: #12382e;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 18px rgba(255, 214, 78, 0.24);
+    }
+
+    .tag {
+      background: #ffe576;
+      color: #163a30;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .product-card h4,
+    .gallery-card h4 {
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .product-card .small,
+    .gallery-card .small,
+    .contact-row .small {
+      margin-top: 6px;
+      color: #fff1a5;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .spec-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .spec-item {
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: rgba(255,255,255,0.94);
+    }
+
+    .gallery-image {
+      aspect-ratio: 4 / 3;
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.12);
+      border: 1px dashed rgba(255,255,255,0.18);
+    }
+
+    .gallery-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    .info-spec-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-spec {
+      background: rgba(0,0,0,0.14);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .info-spec .label {
+      color: #fff0a5;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .info-spec .value {
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 700;
+      color: rgba(255,255,255,0.94);
+    }
+
+    .highlight-box {
+      margin-top: 16px;
+      background: rgba(0,0,0,0.14);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .highlight-box ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.8;
+      font-weight: 700;
+    }
+
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255, 217, 77, 0.12), rgba(27,165,125,0.12));
+      border: 1px solid rgba(255, 226, 108, 0.24);
+    }
+
+    .contact-stack {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-row {
+      border-radius: 18px;
+      background: rgba(0,0,0,0.14);
+      padding: 16px;
+    }
+
+    .contact-row strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .contact-row.phone strong { color: var(--yellow); }
+
+    .footer {
+      padding: 18px 0 38px;
+      text-align: center;
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap,
+      .info-grid,
+      .product-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-list,
+      .info-spec-grid,
+      .spec-badges {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 20px, 1180px); }
+      .feature-list,
+      .info-spec-grid,
+      .spec-badges { grid-template-columns: 1fr; }
+      .title { font-size: 30px; }
+      .brand-title { font-size: 40px; }
+      .btn { width: 100%; }
+      .actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <div class="pill">CƠ KHÍ MINH HỒNG • Máy nông nghiệp & máy bóc vỏ mắc ca</div>
+        <h1 class="brand-title">
+          Cơ khí Minh Hồng
+          <span class="accent">Máy bóc vỏ mắc ca giá xưởng</span>
+        </h1>
+        <p class="lead">
+          Chuyên sản xuất và cung cấp máy bóc vỏ mắc ca, máy tuốt, máy băm, máy sàng đa năng.
+          Giao hàng toàn quốc, kiểm tra máy trước khi thanh toán, hỗ trợ kỹ thuật tận nơi.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="tel:0983099927">Gọi ngay: 0983 099927</a>
+          <a class="btn btn-secondary" href="#lien-he">Xem thông tin liên hệ</a>
+        </div>
+        <div class="feature-list">
+          <div class="feature-item">✓ Giá xưởng trực tiếp</div>
+          <div class="feature-item">✓ Giao hàng toàn quốc</div>
+          <div class="feature-item">✓ Kiểm tra máy trước khi thanh toán</div>
+          <div class="feature-item">✓ Hỗ trợ kỹ thuật tận nơi</div>
+        </div>
+      </div>
+
+      <div class="card hero-media">
+        <div class="hero-media-inner">
+          <div class="image-frame">
+            <img src="images/may-boc-vo-mac-ca-1.jpg" alt="Máy bóc vỏ mắc ca Cơ khí Minh Hồng" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="image-placeholder" style="display:none;">
+              <div>
+                <div style="width:80px;height:80px;border-radius:999px;background:#ffd94d;color:#143f33;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:30px;font-weight:900;">MH</div>
+                Khu vực ảnh máy thật / ảnh xưởng / ảnh đại diện<br>
+                <span style="font-size:14px;color:rgba(255,255,255,0.7);font-weight:600;">Đặt ảnh vào thư mục images với tên may-boc-vo-mac-ca-1.jpg</span>
+              </div>
+            </div>
+          </div>
+          <div class="spec-badges">
+            <div class="spec-badge">900 - 1200 kg/giờ</div>
+            <div class="spec-badge">Ít bể nhân</div>
+            <div class="spec-badge">Chống tắc nghẽn</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container card" style="padding:24px;">
+      <div class="section-title">
+        <div class="eyebrow">Sản phẩm & dịch vụ</div>
+        <h2 class="title">Danh mục nổi bật</h2>
+        <p class="subtitle">Thiết kế web ưu tiên chuyển đổi: thông tin rõ ràng, hình máy thật nổi bật và nút liên hệ dễ bấm trên điện thoại.</p>
+      </div>
+      <div class="product-grid">
+        <article class="card product-card">
+          <div class="card-top">
+            <div class="mini-logo">MH</div>
+            <div class="tag">Bán chạy</div>
+          </div>
+          <h4>Máy bóc vỏ mắc ca</h4>
+          <div class="small">Giá xưởng - chạy êm - ít bể nhân</div>
+          <div class="spec-list">
+            <div class="spec-item">Công suất 900 - 1200 kg/giờ</div>
+            <div class="spec-item">Động cơ 2 - 3 kW</div>
+            <div class="spec-item">Điện 1 pha hoặc 3 pha</div>
+          </div>
+        </article>
+
+        <article class="card product-card">
+          <div class="card-top">
+            <div class="mini-logo">MH</div>
+            <div class="tag">Đa năng</div>
+          </div>
+          <h4>Máy tuốt - băm - sàng</h4>
+          <div class="small">Phù hợp hộ gia đình và cơ sở sản xuất</div>
+          <div class="spec-list">
+            <div class="spec-item">Khung máy chắc chắn</div>
+            <div class="spec-item">Vận hành ổn định</div>
+            <div class="spec-item">Giao hàng toàn quốc</div>
+          </div>
+        </article>
+
+        <article class="card product-card">
+          <div class="card-top">
+            <div class="mini-logo">MH</div>
+            <div class="tag">Theo yêu cầu</div>
+          </div>
+          <h4>Nhận đặt máy theo yêu cầu</h4>
+          <div class="small">Gia công cơ khí theo nhu cầu thực tế</div>
+          <div class="spec-list">
+            <div class="spec-item">Thiết kế theo đơn</div>
+            <div class="spec-item">Hỗ trợ kỹ thuật</div>
+            <div class="spec-item">Bảo hành tận tâm</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container card" style="padding:24px;">
+      <div class="section-title">
+        <div class="eyebrow">Hình máy & thực tế xưởng</div>
+        <h2 class="title">Bộ sưu tập hình máy</h2>
+        <p class="subtitle">Chỉ cần thay ảnh trong thư mục <strong>images</strong> là website tự hiển thị. Rất hợp để chạy trên GitHub Pages.</p>
+      </div>
+      <div class="gallery-grid">
+        <article class="card gallery-card">
+          <div class="gallery-image">
+            <img src="images/may-boc-vo-mac-ca-2.jpg" alt="Máy bóc vỏ mắc ca thực tế" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="image-placeholder" style="display:none;">Ảnh máy thực tế tại xưởng</div>
+          </div>
+          <h4 style="margin-top:14px; font-size:24px;">Máy bóc vỏ mắc ca</h4>
+          <div class="small">Ảnh máy thực tế tại xưởng</div>
+        </article>
+
+        <article class="card gallery-card">
+          <div class="gallery-image">
+            <img src="images/may-boc-vo-mac-ca-3.jpg" alt="Máy bóc vỏ mắc ca phiên bản lớn" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="image-placeholder" style="display:none;">Phiên bản lớn cho cơ sở sản xuất</div>
+          </div>
+          <h4 style="margin-top:14px; font-size:24px;">Phiên bản công suất lớn</h4>
+          <div class="small">Phù hợp cơ sở sản xuất quy mô cao</div>
+        </article>
+
+        <article class="card gallery-card">
+          <div class="gallery-image">
+            <img src="images/xuong-co-khi-minh-hong.jpg" alt="Xưởng Cơ khí Minh Hồng" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="image-placeholder" style="display:none;">Ảnh xưởng và người thật</div>
+          </div>
+          <h4 style="margin-top:14px; font-size:24px;">Xưởng Cơ khí Minh Hồng</h4>
+          <div class="small">Tăng độ tin tưởng khi khách xem web</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container info-grid">
+      <article class="card info-card">
+        <div class="section-title">
+          <div class="eyebrow">Thông tin kỹ thuật</div>
+          <h2 class="title">Máy bóc vỏ mắc ca Cơ khí Minh Hồng</h2>
+        </div>
+
+        <div class="info-spec-grid">
+          <div class="info-spec">
+            <div class="label">Công suất</div>
+            <div class="value">900 - 1200 kg/giờ, có mẫu lớn hơn theo yêu cầu</div>
+          </div>
+          <div class="info-spec">
+            <div class="label">Động cơ</div>
+            <div class="value">2 - 3 kW</div>
+          </div>
+          <div class="info-spec">
+            <div class="label">Nguồn điện</div>
+            <div class="value">1 pha hoặc 3 pha</div>
+          </div>
+          <div class="info-spec">
+            <div class="label">Cơ chế</div>
+            <div class="value">Trục xoay 2 lớp đảo chiều, hoạt động êm ái</div>
+          </div>
+          <div class="info-spec">
+            <div class="label">Ưu điểm</div>
+            <div class="value">Ít rung lắc, ít bể nhân, nhân sạch, hạn chế trầy xước</div>
+          </div>
+          <div class="info-spec">
+            <div class="label">Thiết kế</div>
+            <div class="value">Họng cối đặc biệt, chống tắc nghẽn, vận hành trơn tru</div>
+          </div>
+          <div class="info-spec">
+            <div class="label">Độ bền</div>
+            <div class="value">Máy chắc chắn, bền bỉ qua nhiều năm sử dụng</div>
+          </div>
+          <div class="info-spec">
+            <div class="label">Đánh giá</div>
+            <div class="value">Được bà con nông dân tin dùng và đánh giá cao</div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <div class="label" style="color:#fff0a5; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.08em;">Thông tin nổi bật</div>
+          <ul>
+            <li>Hệ thống chống tắc nghẽn giúp máy vận hành liên tục.</li>
+            <li>Bóc sạch, hạn chế bể vỡ và giữ nhân đẹp.</li>
+            <li>Phù hợp hộ gia đình, đại lý và cơ sở sản xuất.</li>
+            <li>Giao hàng toàn quốc, kiểm tra máy trước khi thanh toán.</li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="card contact-card" id="lien-he">
+        <div class="section-title">
+          <div class="eyebrow">Liên hệ nhanh</div>
+          <h2 class="title">Chốt đơn ngay trên website</h2>
+        </div>
+
+        <div class="contact-stack">
+          <div class="contact-row">
+            <div class="small">Thương hiệu</div>
+            <strong>Cơ khí Minh Hồng</strong>
+          </div>
+          <div class="contact-row phone">
+            <div class="small">Số điện thoại</div>
+            <strong>0983 099927</strong>
+          </div>
+          <div class="contact-row">
+            <div class="small">Địa chỉ</div>
+            <strong style="font-size:18px;">18 Hai Hà, Krông Năng, Đắk Lắk</strong>
+          </div>
+          <div class="contact-row">
+            <div class="small">Cam kết</div>
+            <strong style="font-size:18px;">Giao hàng toàn quốc - Kiểm tra máy trước khi thanh toán</strong>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top:18px;">
+          <a class="btn btn-primary" href="tel:0983099927">Gọi ngay</a>
+          <a class="btn btn-secondary" href="https://zalo.me/0983099927" target="_blank" rel="noreferrer">Nhắn Zalo</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">© Cơ khí Minh Hồng - Website bán hàng chạy tốt trên GitHub Pages</div>
+  </footer>
+</body>
+</html>
